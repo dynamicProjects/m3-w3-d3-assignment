@@ -50,6 +50,7 @@ function update() {
   });
   setTimeout(update, 20);
 }
+// Add event listener to the "Update" button
 startBtn.addEventListener("click", function () {
   update();
 });
