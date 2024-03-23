@@ -13,6 +13,7 @@ function makePac() {
   // returns an object with random values scaled {x: 33, y: 21}
   let velocity = setToRandom(10); // {x:?, y:?}
   let position = setToRandom(200);
+  let timer = 0;
 
   // Add image to div id = game
   let game = document.getElementById('game');
@@ -35,19 +36,35 @@ function makePac() {
     position,
     velocity,
     newimg,
+    timer
   };
 }
 
 function update() {
+  let imgIndex;
   // loop over pacmen array and move each one and move image in DOM
   pacMen.forEach((item) => {
+    item.timer++;
     checkCollisions(item);
     item.position.x += item.velocity.x;
     item.position.y += item.velocity.y;
 
     item.newimg.style.left = item.position.x;
     item.newimg.style.top = item.position.y;
+    if(item.velocity.x < 0){
+      imgIndex =3;
+    }else{
+      imgIndex=1
+    }
+    if(item.timer ==15){
+      item.newimg.src= `./images/PacMan${imgIndex + 1}.png`;
+    }else if(item.timer ==30){
+      item.timer=-1;
+    }else if(item.timer==0){
+      item.newimg.src= `./images/PacMan${imgIndex}.png`;
+    }
   });
+ 
   setTimeout(update, 20);
 }
 // Add event listener to the "Update" button
