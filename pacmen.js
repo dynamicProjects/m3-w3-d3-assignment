@@ -79,12 +79,12 @@ function checkCollisions(item) {
 
   // Check collision with left and right walls
   if (item.position.x <= 0 || item.position.x >= gameWidth - item.newimg.width) {
-    item.velocity.x *= -1; // Reverse the x velocity to make the Pacman bounce
+    item.velocity.x *= -1;
   }
 
   // Check collision with top and bottom walls
   if (item.position.y <= 0 || item.position.y >= gameHeight - item.newimg.height) {
-    item.velocity.y *= -1; // Reverse the y velocity to make the Pacman bounce
+    item.velocity.y *= -1; 
   }
   
 }
